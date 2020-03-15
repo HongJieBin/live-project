@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 
 import maskAppointment.pojo.SystemTime;
 import maskAppointment.util.DBUtil;
@@ -62,16 +63,46 @@ public class SystemTimeDAOImpl implements SystemTimeDAO{
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(int id) {
 		// TODO Auto-generated method stub
 		String sql="delete from systeem_time where id=?";
 		try(Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)){
-			ps.setString(1, id);
+			ps.setInt(1, id);
 			ps.execute();
 		}catch(SQLException e) {
 			
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public Timestamp getOpentime(int id) {
+		// TODO Auto-generated method stub
+		Timestamp timestamp = null;
+		String sql = "select opentime from system_time where id=?";
+		try (Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)) {
+			ps.setInt(1,id);
+			ResultSet rs = ps.executeQuery();
+			timestamp=rs.getTimestamp(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return timestamp;
+	}
+
+	@Override
+	public Timestamp getClosetime(int id) {
+		// TODO Auto-generated method stub
+		Timestamp timestamp = null;
+		String sql = "select closetime from system_time where id=?";
+		try (Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)) {
+			ps.setInt(1,id);
+			ResultSet rs = ps.executeQuery();
+			timestamp=rs.getTimestamp(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return timestamp;
 	}
 	
 }

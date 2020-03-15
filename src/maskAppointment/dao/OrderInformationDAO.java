@@ -2,7 +2,9 @@ package maskAppointment.dao;
 
 import java.sql.ResultSet;
 
+import maskAppointment.pojo.OrderInformation;
+
 public interface OrderInformationDAO {
 	
-	public ResultSet select(String idNum,int round) ;
+	public OrderInformation select(String idNum,int round) ;
 }

@@ -34,14 +34,8 @@ public class SetMaskCountServlet extends HttpServlet {
 		Mask maskCntMask = new Mask();
 		String totalString = request.getParameter("singleNum");
 		String maxString = request.getParameter("totalNum");
-		System.out.println(totalString);
-		System.out.println(maxString);
-		
 		int totalCnt = Integer.valueOf(totalString);
 		int maxCnt = Integer.valueOf(maxString);
-
-		System.out.println(totalCnt);
-		System.out.println(maxCnt);
 		maskCntMask.setTotalCount(totalCnt);
 		maskCntMask.setMaxCount(maxCnt);
 		maskDAO.setMask(maskCntMask);

@@ -55,12 +55,22 @@ public class MaskDAOImpl implements MaskDAO{
 		int remainCnt = mask.getRemainCount();
 		int maxCnt = mask.getMaxCount();
 		try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement()) {
-			String sqlString = "update mask set total = '" + totalCnt + "',"
-					+ "maxcount = '" + maxCnt + "'";
-			int changedLine = s.executeUpdate(sqlString);
+			String sqlString = "select * from mask";
+			int changedLine = 0;
+			ResultSet rs = s.executeQuery(sqlString);
+			if (rs.next()) {
+				sqlString = "update mask set total = '" + totalCnt + "',"
+						+"remainder = '" + totalCnt + "',maxcount = '" + maxCnt + "'";
+				changedLine = s.executeUpdate(sqlString);
+			}else {
+				sqlString = "insert into mask values ('1','" + totalCnt +"','"+
+						totalCnt + "','" + maxCnt + "')";
+				changedLine = s.executeUpdate(sqlString);
+			}
 			if(changedLine == 1) {
 				result = true;
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

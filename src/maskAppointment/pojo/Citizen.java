@@ -52,6 +52,5 @@ public class Citizen {
 		this.lastRound = lastRound;
 	}
 	
-	
 }
 

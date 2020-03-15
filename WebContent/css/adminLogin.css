@@ -1,0 +1,26 @@
+#returnBack{
+	margin:0px;
+	float:left;
+	font-size:29px;
+	width:150px;
+	text-align:center;
+}
+
+#loadInput{
+	width:380px;
+	height:286px;
+	font-size:29px;
+	padding-left:64px;
+	margin:10px auto;
+}
+
+.loadButton{
+	width:120px;
+	height:40px;
+	font-size:25px;
+	margin: 11px 10px 10px 60px;
+}
+
+#inputPassword{
+	width:180px;
+}

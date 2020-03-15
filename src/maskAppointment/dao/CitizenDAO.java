@@ -10,41 +10,26 @@ import java.util.List;
 
 import maskAppointment.util.DBUtil;
 
-public class CitizenDAO{
+public interface CitizenDAO {
 	
-	private Connection conn=null;
-	private Statement stm=null;
-	private ResultSet rs=null;
+	/**
+	 * 将市民注册进表
+	 * @param citizen
+	 */
+	public void register(Citizen citizen);
+	/*
+	 * 更新市民表里面的信息
+	 */
+	public void update(Citizen citizen);
+	/**
+	 * 判断市民是否存在于表中
+	 * @param citizen
+	 */
+	public boolean existInRecord(Citizen citizen);
+	/*
+	 * 判断市民是否在预约表中
+	 */
+	public boolean existInCitizen(Citizen citizen);
+	public void appointment(Citizen citizen);
 	
-	public List<Citizen> get(String idNumber) {
-		List<Citizen> list=new ArrayList<>();
-		
-		try {
-			conn=DBUtil.getConnection();
-			stm=conn.createStatement();
-			String sql="select from citizen where idNumber='"+idNumber+"'";
-			rs=stm.executeQuery(sql);
-			while(rs.next()) {
-				list.add(new Citizen(rs.getString("idNumber"),rs.getString("name"),rs.getString("phone"),rs.getInt("orderNum"),rs.getInt("lastRound")));
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			DBUtil.close(rs, stm, conn);
-		}
-		return list;
-	}
-	
-	public void update(Citizen c) {
-		try {
-			conn=DBUtil.getConnection();
-			stm=conn.createStatement();
-			String sql="insert into citizen value('"+c.getIdNumber()+"','"+c.getName()+"','"+c.getPhone()+"',"+String.valueOf(c.getOrderNum())+","+String.valueOf(c.getLastRound());
-			stm.execute(sql);
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			DBUtil.close(rs, stm, conn);
-		}
-	}
 }

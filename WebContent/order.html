@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>口罩预约系统首页</title>
+	<link rel="stylesheet" type="text/css" href="css/order.css" />
+</head>
+<body>
+	<div id="header">口罩预约系统</div>
+	<div id="wrap">	
+		<div id="testSet">
+			<div id="orderSet">
+				<button class="orderButton">开始预约</button>
+				<button class="orderButton">结束预约</button>
+			</div>
+			<div id="limitSet">
+				<form>
+					口罩总量:<input class="inputSize" type="text" name="maskSum">
+					<button class="limitButton">确认</button>
+					<br />
+					<br />
+					<br />
+					单次最大预约购买量:<input class="inputSize" type="text" name="limitSet">
+					<button class="limitButton">确认</button>
+				</form> 
+			</div>
+		</div>
+		<p id="tipShow">
+			尚未开启预约
+		</p>
+			
+		<div id="loadButton">
+			<button class="orderButton" id="adminLoad">管理员登录</button>
+			<button class="orderButton" id="citizenOrder">市民预约</button>
+		</div>
+	</div>
+</body>
+</html>

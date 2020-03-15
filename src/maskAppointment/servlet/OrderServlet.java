@@ -56,7 +56,7 @@ public class OrderServlet extends HttpServlet {
 		}
 
 		if(this.isInformationFormal(idNum, name, mask,request)) {
-			OrderInformationDAOImpl oip=new OrderInformatinoDAOImpl();
+			OrderInformationDAOImpl oip=new OrderInformationDAOImpl();
 			oip.insert(new OrderInformation(idNum,round));
 			OrderInformation rs=oip.select(idNum,round);
 			if(rs!=null)
@@ -91,7 +91,6 @@ public class OrderServlet extends HttpServlet {
 		if(ci.hasOne(idNum)!=null)
 			return false;
 		else {
-			Citizen c=ci.hasOne(idNum);
 			if(oi.select(idNum, round)!=null)
 				return false;
 		}

@@ -1,0 +1,18 @@
+@charset "UTF-8";
+div.input,input{
+	width: 300px;
+    height: 20px;
+    margin: 10px auto;
+    display: inline;
+}
+oneline{
+	display:block;
+}
+button{
+	marign: 0px auto;
+	display: block;
+	text-align: center;
+}
+main{
+	margin: auto;
+}

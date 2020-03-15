@@ -5,5 +5,5 @@ import java.util.List;
 import maskAppointment.pojo.Proof;;
 
 public interface ProofDAO {
-	List<Proof> list();
+	List<Proof> getList();
 }

@@ -13,7 +13,7 @@ import maskAppointment.util.DBUtil;
 public class ProofDAOImpl implements ProofDAO{
 
 	@Override
-	public List<Proof> list() {
+	public List<Proof> getList() {
 		// TODO Auto-generated method stub
 		List<Proof> proofs = new ArrayList<Proof>();
 		Connection conn;

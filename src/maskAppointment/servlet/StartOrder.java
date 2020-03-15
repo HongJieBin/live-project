@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class StartOrder
+ * servelet implementation class StartOrder
  */
 @WebServlet("/StartOrder")
 public class StartOrder extends HttpServlet {

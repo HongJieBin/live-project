@@ -29,7 +29,7 @@
     <div>
     	<div>设置口罩数量</div>
     	<div>
-    		<form>
+    		<form action="setMaskCountServlet" method="post">
     			单人单次最高可预约数：
     			<select name="singleNum">
     				<%
@@ -48,12 +48,10 @@
     				<option><%=j %></option>
     				<%} %>
     			</select><br/>
+    			<button>提交</button>
     		</form>
     	</div>
     </div>
     <br/>
-    <div id="button">
-		<a href=""><button>提交</button></a>
-    </div>
 </body>
 </html>

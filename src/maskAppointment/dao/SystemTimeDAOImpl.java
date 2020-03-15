@@ -75,34 +75,35 @@ public class SystemTimeDAOImpl implements SystemTimeDAO{
 		}
 	}
 
-	@Override
-	public Timestamp getOpentime(int id) {
+	public Timestamp getOpentime() {
 		// TODO Auto-generated method stub
-		Timestamp timestamp = null;
-		String sql = "select opentime from system_time where id=?";
-		try (Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)) {
-			ps.setInt(1,id);
-			ResultSet rs = ps.executeQuery();
-			timestamp=rs.getTimestamp(1);
+		Timestamp opentime = null;
+		try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement()) {
+			String sql = "select count(*) from system_time";
+			ResultSet rs = s.executeQuery(sql);
+			while (rs.next()) {
+				opentime=rs.getTimestamp(2);;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return timestamp;
-	}
-
-	@Override
-	public Timestamp getClosetime(int id) {
-		// TODO Auto-generated method stub
-		Timestamp timestamp = null;
-		String sql = "select closetime from system_time where id=?";
-		try (Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)) {
-			ps.setInt(1,id);
-			ResultSet rs = ps.executeQuery();
-			timestamp=rs.getTimestamp(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return timestamp;
+		return opentime;
 	}
 	
+	public Timestamp getClosetime() {
+		// TODO Auto-generated method stub
+		Timestamp closetime = null;
+		try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement()) {
+			String sql = "select count(*) from system_time";
+			ResultSet rs = s.executeQuery(sql);
+			while (rs.next()) {
+				closetime=rs.getTimestamp(3);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return closetime;
+	}
+
 }
+	

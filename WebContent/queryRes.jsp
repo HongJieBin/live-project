@@ -21,6 +21,7 @@
 			out.println("预约口罩数量："+getOrderNum());
 		}		
 	}
+	
 	if(isShot==false)
 		System.out.println("很遗憾，您未中签！");		
 	%>	

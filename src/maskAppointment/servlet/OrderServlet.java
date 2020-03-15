@@ -62,7 +62,7 @@ public class OrderServlet extends HttpServlet {
 			if(rs!=null)
 				request.setAttribute("OrderNumber",String.valueOf(rs.getOrderId()));
 		}else {
-			request.setAttribute("orderNumber", null);
+			request.setAttribute("OrderNumber", null);
 		}
 	}
 
@@ -74,7 +74,8 @@ public class OrderServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	private boolean isInformationFormal(String idNum,String name,int mask) {
+	private boolean isInformationFormal(String idNum,String name,int mask,HttpServletRequest request) {
+		
 		MaskDAOImpl mi=new MaskDAOImpl();
 		CitizenDAOImpl ci=new CitizenDAOImpl();
 		SystemTimeDAOImpl si=new SystemTimeDAOImpl();
@@ -85,7 +86,7 @@ public class OrderServlet extends HttpServlet {
 		Timestamp closeDate=sysi.getClosetime();
 		Timestamp nowTime=new Timestamp(System.currentTimeMillis());
 		
-		if(nowTime.before(openDate)||closeDate.before(nowTime))
+		if(nowTime.before(openDate)||closeDate.before(nowTime)||(int)request.getAttribute("start")==0)
 			return false;
 		if(ci.hasOne(idNum)!=null)
 			return false;

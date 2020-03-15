@@ -55,7 +55,7 @@ public class OrderServlet extends HttpServlet {
 			cDaoI.insert(c);
 		}
 
-		if(this.isInformationFormal(idNum, name, mask)) {
+		if(this.isInformationFormal(idNum, name, mask,request)) {
 			OrderInformationDAOImpl oip=new OrderInformatinoDAOImpl();
 			oip.insert(new OrderInformation(idNum,round));
 			OrderInformation rs=oip.select(idNum,round);

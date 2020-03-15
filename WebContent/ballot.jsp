@@ -1,8 +1,10 @@
 <%//@page import="maskAppointment.pojo.proof"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+
 <%@page import="maskAppointment.dao.BallotRecordDAO"%>
 <%@page import="maskAppointment.dao.BallotRecordDAOImpl,maskAppointment.pojo.BallotRecord,java.util.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +15,7 @@
 		<a href="admin.jsp"><button>返回</button></a>
     </div>
     <%//OrderInformation information = new OrderInformation();%>
+
     <div>最新一轮中签名单</div>
     <div>
     	<table border="1">
@@ -33,6 +36,7 @@
 			<%
             }
             %>
+
    </table>
 	</div>
 </body>

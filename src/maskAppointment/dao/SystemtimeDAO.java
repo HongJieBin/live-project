@@ -1,10 +1,16 @@
 package maskAppointment.dao;
 
-import maskAppointment.pojo.SystemTime;;
+import java.sql.*;
+
+import maskAppointment.pojo.Systemtime;
+import maskAppointment.util.DBUtil;
 
 public interface SystemTimeDAO {
-	int getTotal();
-    void add(SystemTime bean);
-    void update(SystemTime bean);
-    void delete(String id);
+	
+	public int getTotal();
+	//设置信息
+	public void set(Systemtime systemtime);
+	
+	//�޸ĸ���ʱ��
+	public void update(Systemtime systemtime);
 }

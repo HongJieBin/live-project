@@ -5,9 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 
-import maskAppointment.pojo.SystemTime;
+import maskAppointment.pojo.Systemtime;
 import maskAppointment.util.DBUtil;
 
 public class SystemTimeDAOImpl implements SystemTimeDAO{
@@ -29,7 +28,7 @@ public class SystemTimeDAOImpl implements SystemTimeDAO{
 	}
 
 	@Override
-	public void add(SystemTime bean) {
+	public void add(Systemtime bean) {
 		// TODO Auto-generated method stub
 		String sql = "insert into system_time values(null ,? ,?)";
 		try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
@@ -63,11 +62,11 @@ public class SystemTimeDAOImpl implements SystemTimeDAO{
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(String id) {
 		// TODO Auto-generated method stub
 		String sql="delete from systeem_time where id=?";
 		try(Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)){
-			ps.setInt(1, id);
+			ps.setString(1, id);
 			ps.execute();
 		}catch(SQLException e) {
 			
@@ -75,35 +74,16 @@ public class SystemTimeDAOImpl implements SystemTimeDAO{
 		}
 	}
 
-	public Timestamp getOpentime() {
+	@Override
+	public void set(Systemtime systemtime) {
 		// TODO Auto-generated method stub
-		Timestamp opentime = null;
-		try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement()) {
-			String sql = "select count(*) from system_time";
-			ResultSet rs = s.executeQuery(sql);
-			while (rs.next()) {
-				opentime=rs.getTimestamp(2);;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return opentime;
-	}
-	
-	public Timestamp getClosetime() {
-		// TODO Auto-generated method stub
-		Timestamp closetime = null;
-		try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement()) {
-			String sql = "select count(*) from system_time";
-			ResultSet rs = s.executeQuery(sql);
-			while (rs.next()) {
-				closetime=rs.getTimestamp(3);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return closetime;
+		
 	}
 
-}
+	@Override
+	public void update(Systemtime systemtime) {
+		// TODO Auto-generated method stub
+		
+	}
 	
+}

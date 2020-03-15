@@ -1,33 +1,32 @@
 package maskAppointment.pojo;
 
-import java.sql.Timestamp;
-
-public class SystemTime {
-	private int id;
-	private Timestamp opentime;
-	private Timestamp closetime;
+public class Systemtime {
+	private int  id;
+	private String opentime;
+	private String closetime;
 	
 	public int getId() {
 		return id;
 	}
-
+	
+	public String getOpentime() {
+		return opentime;
+	}
+	
+	public String geClosetime() {
+		return closetime;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 	
-	public Timestamp getOpentime() {
-		return opentime;
+	public void setOpentime(String opentime) {
+		this.opentime = opentime;
 	}
 	
-	public void setOpentime(Timestamp opentime) {
-		this.opentime=opentime;
+	public void setClosetime(String closetime) {
+		this.closetime = closetime;
 	}
 	
-	public Timestamp getClosetime() {
-		return closetime;
-	}
-	
-	public void setClosetime(Timestamp closetime) {
-		this.closetime=closetime;
-	}
 }

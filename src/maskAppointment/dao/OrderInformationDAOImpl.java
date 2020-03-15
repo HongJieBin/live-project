@@ -21,7 +21,7 @@ public class OrderInformationDAOImpl implements OrderInformationDAO{
 			String sql="select * from orderInformation where idNumber='"+idNum+"' AND orderRound="+round;
 			rs=stmt.executeQuery(sql);
 			if(rs.next())
-				oi=new OrderInformation(rs.getInt("orderId"),rs.getString("idNumber"),rs.getInt("orderRound"));
+				oi=new OrderInformation(String.valueOf(rs.getInt("orderId")),rs.getString("idNumber"),rs.getInt("orderRound"));
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -30,11 +30,11 @@ public class OrderInformationDAOImpl implements OrderInformationDAO{
 		return oi;
 	}
 	
-	public boolean insert(OrderInformaint oi) {
+	public boolean insert(OrderInformation oi) {
 		try {
 			conn=DBUtil.getConnection();
 			stmt=conn.createStatement();
-			String sql="insert into orderInformation value("+String.valueOf(oi.getOrderId)+",'"+oi.getIdNumber+"',"+String.valueOf(oi.getOrderRound);
+			String sql="insert into orderInformation value("+String.valueOf(oi.getOrderId())+",'"+oi.getIdNumber()+"',"+String.valueOf(oi.getOrderRound());
 			return stmt.execute(sql);
 		}catch(SQLException e) {
 			e.printStackTrace();

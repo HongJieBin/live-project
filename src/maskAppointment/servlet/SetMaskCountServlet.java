@@ -32,10 +32,16 @@ public class SetMaskCountServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Mask maskCntMask = new Mask();
-		String totalString = request.getParameter("total");
-		String maxString = request.getParameter("max");
+		String totalString = request.getParameter("singleNum");
+		String maxString = request.getParameter("totalNum");
+		System.out.println(totalString);
+		System.out.println(maxString);
+		
 		int totalCnt = Integer.valueOf(totalString);
 		int maxCnt = Integer.valueOf(maxString);
+
+		System.out.println(totalCnt);
+		System.out.println(maxCnt);
 		maskCntMask.setTotalCount(totalCnt);
 		maskCntMask.setMaxCount(maxCnt);
 		maskDAO.setMask(maskCntMask);

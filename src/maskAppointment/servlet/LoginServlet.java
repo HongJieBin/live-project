@@ -35,10 +35,15 @@ public class LoginServlet extends HttpServlet {
 		String passwdResult = adminDAO.getPasswd(nameString);
 		if(passwdResult.equals("")) {
 			//账号不存在
+			request.setAttribute("message", "账号不存在");
+			request.getRequestDispatcher("adminLogin.jsp").forward(request,response);
 		}else if(passwdResult.equals(passwdString)) {
 			//密码正确
+			request.getRequestDispatcher("admin.jsp").forward(request,response);
 		}else {
 			//密码错误
+			request.setAttribute("message", "密码错误");
+			request.getRequestDispatcher("adminLogin.jsp").forward(request,response);
 		}
 			
 		/*if (nameString.equals("admin") && passwdString.equals("123456")) {
